@@ -111,3 +111,10 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 } 
+
+ion-grid:nth-child(even) {
+  background: #F2F2F2
+}
+ion-grid:nth-child(odd) {
+  background: #FFF
+}

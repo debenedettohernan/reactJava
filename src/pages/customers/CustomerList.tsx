@@ -1,7 +1,6 @@
 import { IonButtons, IonCol, IonContent, IonGrid, IonHeader, IonMenuButton, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../../components/ExploreContainer';
-
 const CustomerList: React.FC = () => {
 
   const { name } = useParams<{ name: string; }>();
@@ -23,43 +22,42 @@ const CustomerList: React.FC = () => {
             <IonTitle size="large">{name}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        
-      <IonGrid>
-        <IonRow style={{ backgroundColor: '#DDD' }}>
-          <IonCol>1</IonCol>
-          <IonCol>2</IonCol>
-          <IonCol>3</IonCol>
-        </IonRow>
-      </IonGrid>
+        <IonGrid>
+          <IonRow>
+            <IonCol>1</IonCol>
+            <IonCol>2</IonCol>
+            <IonCol>3</IonCol>
+          </IonRow>
+        </IonGrid>
 
-      <IonGrid>
-        <IonRow>
-          <IonCol>1</IonCol>
-          <IonCol>2</IonCol>
-          <IonCol>3</IonCol>
-          <IonCol>4</IonCol>
-          <IonCol>5</IonCol>
-          <IonCol>6</IonCol>
-        </IonRow>
-      </IonGrid>
+        <IonGrid>
+          <IonRow>
+            <IonCol>1</IonCol>
+            <IonCol>2</IonCol>
+            <IonCol>3</IonCol>
+            <IonCol>4</IonCol>
+            <IonCol>5</IonCol>
+            <IonCol>6</IonCol>
+          </IonRow>
+        </IonGrid>
 
-      <IonGrid>
-        <IonRow>
-          <IonCol>1</IonCol>
-          <IonCol>2</IonCol>
-          <IonCol>3</IonCol>
-          <IonCol>4</IonCol>
-          <IonCol>5</IonCol>
-          <IonCol>6</IonCol>
-          <IonCol>7</IonCol>
-          <IonCol>8</IonCol>
-          <IonCol>9</IonCol>
-          <IonCol>10</IonCol>
-          <IonCol>11</IonCol>
-          <IonCol>12</IonCol>
-        </IonRow>
-      </IonGrid>
-        
+        <IonGrid>
+          <IonRow>
+            <IonCol>1</IonCol>
+            <IonCol>2</IonCol>
+            <IonCol>3</IonCol>
+            <IonCol>4</IonCol>
+            <IonCol>5</IonCol>
+            <IonCol>6</IonCol>
+            <IonCol>7</IonCol>
+            <IonCol>8</IonCol>
+            <IonCol>9</IonCol>
+            <IonCol>10</IonCol>
+            <IonCol>11</IonCol>
+            <IonCol>12</IonCol>
+          </IonRow>
+        </IonGrid>
+
 
       </IonContent>
     </IonPage>
