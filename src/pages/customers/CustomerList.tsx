@@ -1,14 +1,14 @@
 import { IonButton, IonButtons, IonCard, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonMenuButton, IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import ExploreContainer from '../../components/ExploreContainer';
 import { add, pencil, close } from 'ionicons/icons';
 import { useEffect, useState } from 'react';
-import { searchCustomers } from './CustomersApi';
+import { deleteCustomer, saveCustomer, searchCustomers } from './CustomersApi';
 const CustomerList: React.FC = () => {
 
   const { name } = useParams<{ name: string; }>();
   const [clientes, setClientes] = useState<any>([]);
-
+  const history = useHistory();
   useEffect(() => {
     search();
 
@@ -16,6 +16,25 @@ const CustomerList: React.FC = () => {
   const search = () => {
   let result = searchCustomers();
     setClientes(result)
+  }
+
+  const remove = (id: string) => {
+deleteCustomer(id);
+search();
+  }
+  const pruebaLocalStorage = () => {
+    const ejemplo = {
+      id: 1,
+      firstname: 'Hernan',
+      lastName: 'Debenedetto',
+      email: 'hernan@gmail.com',
+      phone: '9999999',
+      address: 'sixto laspiur'
+    }
+ saveCustomer(ejemplo);
+  }
+  const addCustomer = () => {
+    history.push('/page/customer/new');
   }
 
   return (
@@ -31,7 +50,7 @@ const CustomerList: React.FC = () => {
 
       <IonContent fullscreen>
         <IonCard>
-          <IonButton fill='solid' size='default' slot='' > <IonIcon icon={add} >
+          <IonButton onClick={addCustomer} fill='solid' size='default' slot='' > <IonIcon icon={add} >
           </IonIcon>Agregar Cliente
           </IonButton>
           <IonHeader collapse="condense">
@@ -60,7 +79,7 @@ const CustomerList: React.FC = () => {
                     <IonButton color={'primary'} fill='clear'>
                       <IonIcon icon={pencil} slot='icon-only' />
                     </IonButton>
-                    <IonButton color={'danger'} fill='clear'>
+                    <IonButton color={'danger'} fill='clear' onClick={() => remove(cliente.id)}>
                       <IonIcon icon={close} slot='icon-only' />
                     </IonButton>
                   </IonCol>
@@ -81,6 +100,9 @@ const CustomerList: React.FC = () => {
             </IonButton>
           </IonGrid> */}
         </IonCard>
+        <IonButton onClick={pruebaLocalStorage} color={'danger'} fill='clear'>
+                    Prueba local storage
+                    </IonButton>
       </IonContent>
     </IonPage>
   );

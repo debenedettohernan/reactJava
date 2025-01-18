@@ -2,8 +2,9 @@ import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/r
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import Page from './pages/Page';
-import CostumerList from './pages/customers/CustomerList';
-
+import CustumerList from './pages/customers/CustomerList';
+import { IonReactRouter } from '@ionic/react-router';
+import CustomerEdit from './pages/customers/CustomerEdit';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -33,7 +34,7 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { IonReactRouter } from '@ionic/react-router';
+
 
 
 setupIonicReact();
@@ -49,7 +50,10 @@ const App: React.FC = () => {
               <Redirect to="/page/customers" />
             </Route>
             <Route path="/page/customers" exact={true}>
-              <CostumerList />
+              <CustumerList />
+            </Route>
+            <Route path="/page/customers/:id" exact={true}>
+              <CustomerEdit />
             </Route>
               <Page />
           </IonRouterOutlet>

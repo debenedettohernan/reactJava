@@ -6,7 +6,7 @@ export function searchCustomers() {
   customer = JSON.parse(customer);
     return customer;
 }
-export function addCustomer(customer: any) {
+export function saveCustomer(customer: any) {
 let customers = searchCustomers();
 customers.push(customer);
 localStorage['customers'] = JSON.stringify(customers);
@@ -22,11 +22,8 @@ export function updateCustomer(customer: any) {
   });
 }
 
-export function deleteCustomer(customerId: string) {
-  return fetch(`https://api.example.com/customers/${customerId}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  });
-}
+export function deleteCustomer(customer: string)  {
+  let customers = searchCustomers();
+  customers.splice(customers.findIndex((customers: any) => customers.id === customer), 1);
+  localStorage['customers'] = JSON.stringify(customers);
+  }
